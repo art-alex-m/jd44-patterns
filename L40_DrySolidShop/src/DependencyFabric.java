@@ -1,7 +1,5 @@
-import command.CommandChain;
-import command.CommandParser;
-import command.HelpCommand;
-import command.UnknownCommand;
+import command.*;
+import product.ProductGenerator;
 import product.ProductListFormatter;
 import product.ProductStorage;
 import product.ProductStorageMapImpl;
@@ -25,6 +23,7 @@ public class DependencyFabric {
         if (commands == null) {
             commands = new HelpCommand(System.out);
             commands
+                    .setNext(new ProductListCommand(getProductStorage(), getProductListFormatter(), System.out))
                     .setNext(new UnknownCommand());
         }
 
@@ -33,7 +32,12 @@ public class DependencyFabric {
 
     public ProductStorage getProductStorage() {
         if (productStorage == null) {
+            ProductGenerator productGenerator = new ProductGenerator();
             productStorage = new ProductStorageMapImpl();
+            int limit = ProductGenerator.DEFAULT_STORAGE_CAPACITY;
+            while (--limit >= 0) {
+                productStorage.add(productGenerator.generate());
+            }
         }
 
         return productStorage;

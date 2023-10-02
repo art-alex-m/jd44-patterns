@@ -7,7 +7,7 @@ public class HelpCommand extends AbstractCommand {
     private final PrintStream out;
 
     public HelpCommand(PrintStream out) {
-        super(new Command(List.of("/help")), "Describe all available commands");
+        super(new Command(List.of("/help")), "Вывод списка доступных команд");
         this.out = out;
     }
 

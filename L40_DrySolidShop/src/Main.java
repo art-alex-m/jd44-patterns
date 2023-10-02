@@ -1,13 +1,14 @@
-import command.Command;
 import command.CommandChain;
-
-import java.util.List;
+import command.CommandParser;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("Добро пожаловать в Магазин");
+        System.out.println("Для просмотра доступных команд введите /help");
+
         DependencyFabric fabric = new DependencyFabric();
+        CommandParser parser = fabric.getCommandParser();
         CommandChain commands = fabric.getCommandChain();
-        commands.execute(new Command(List.of("/help")));
+        commands.execute(parser.parse("/product-list"));
     }
 }
