@@ -9,6 +9,6 @@ public class Main {
         DependencyFabric fabric = new DependencyFabric();
         CommandParser parser = fabric.getCommandParser();
         CommandChain commands = fabric.getCommandChain();
-        commands.execute(parser.parse("/basket"));
+        commands.execute(parser.parse("/help"));
     }
 }

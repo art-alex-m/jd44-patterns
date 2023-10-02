@@ -41,6 +41,8 @@ public class DependencyFabric {
             commands
                     .setNext(new ProductListCommand(getProductStorage(), getProductListFormatter(), System.out))
                     .setNext(new BasketListCommand(getBasketToStringFormatter(), getBasket(), System.out))
+                    .setNext(new BasketAddCommand(getProductStorage(), getBasket()))
+                    .setNext(new ExitCommand(System.out))
                     .setNext(new UnknownCommand());
         }
 
