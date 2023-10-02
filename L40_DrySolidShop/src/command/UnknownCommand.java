@@ -7,7 +7,7 @@ public class UnknownCommand extends AbstractCommand {
 
     @Override
     protected boolean doWork(Command command) {
-        throw new IllegalCallerException(String.format("Команда не была обработана '%s'", command));
+        throw new IllegalCallerException(String.format("Неизвестная команда '%s'", command));
     }
 
     @Override
