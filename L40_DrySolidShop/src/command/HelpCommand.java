@@ -15,6 +15,7 @@ public class HelpCommand extends AbstractCommand {
     protected boolean doWork(Command command) {
 
         CommandChainIterator it = new CommandChainIterator(this);
+        out.println("\nДоступные команды:");
         while (it.hasNext()) {
             CommandChain executor = it.next();
             if (executor.getSignature().getStatement().isEmpty()) {
